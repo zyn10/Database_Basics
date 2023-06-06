@@ -1,0 +1,79 @@
+/* 	Tables/data for question 1  */
+
+CREATE TABLE TEAM(Team CHAR(50) NOT NULL PRIMARY KEY,
+                        Coach CHAR(50) NOT NULL,
+                        
+                        WonGames char(50) null)
+               
+insert into team values ('1', 'William', '4');
+insert into team values ('2', 'David', '5');
+
+
+CREATE TABLE player(playerid CHAR(50) NOT NULL PRIMARY KEY,
+                        Nname CHAR(50) NOT NULL,
+                        Team char(50) null,
+                        Height char(50) null,
+                        Birthday Date null,
+                        PlayedMatches char(50) null,
+                        Scored_Runs char(50) null,
+                        FOREIGN KEY (team) REFERENCES team(team))
+insert into player values ('1', 'John', 2, '6.2', '03-03-1990', '16', '105');
+insert into player values ('2', 'Tom', 1, '5.7', '09-06-1990', '14', '90');
+insert into player values ('3', 'Harry', 1, '5.9', '08-07-1992', '11', '98');
+
+
+CREATE TABLE Match(Matchid CHAR(50) NOT NULL PRIMARY KEY,
+                        MatchDate  Date NOT NULL,
+                        Team1 char(50) null,
+                        Team2 char(50) null,
+                        WonSetsTeam1 char(50) null,
+                        WonSetsTeam2 char(50) null,
+                        Refree char(50) null)
+                      
+
+insert into match values ('222', '03-03-2019', 1, '2', '3', '4', '1');
+insert into match values ('333', '05-07-2019', 1, '2', '2', '4', '1');
+insert into match values ('444', '04-05-2019', 1, '2', '4', '4', '2');
+
+CREATE TABLE Played(Matchid CHAR(50) NOT NULL,
+                       playerid  char(50) NOT NULL,
+                        Role char(50) null,
+                        ScoredPoints char(50) null,
+                     FOREIGN KEY (Matchid) REFERENCES match(Matchid),
+                     FOREIGN KEY (playerid) REFERENCES player(playerid))
+                       
+                      
+
+insert into played values ('222', '1', '', '150');
+insert into played values ('333', '2', '', '250');
+insert into played values ('444', '3', '', '170');
+ 
+/* 	Tables/data for question 2  */
+
+CREATE TABLE property (
+p_ID	INT PRIMARY KEY,
+p_price	CHAR(15) NOT NULL,
+p_owner	VARCHAR(15) NOT NULL,
+p_sqrFeet	CHAR(15) ,
+p_managedBy	VARCHAR(50) NOT NULL,
+p_location	Varchar(50) ,
+);
+INSERT INTO property VALUES(1,'100,000'     ,'Alice'   ,'560','Property Pete','Lake View');
+INSERT INTO property VALUES(2,'3,400,000'     ,'Bob'   ,'2000','Hyde Park Prop','Hyde Park');
+INSERT INTO property VALUES(3,'1,200,000'     ,'Bob'   ,'1200','Property Pete','Hyde Park');
+INSERT INTO property VALUES(4,'5,000,000'     ,'Martha'   ,'800','Fancy Rentals','Evanston');
+
+
+Drop Table management;
+CREATE TABLE management (
+mgmName	VARCHAR(50) NOT NULL,
+p_location VARCHAR(50) NOT NULL ,
+yearlyProfit VARCHAR(50) NOT NULL,
+);
+INSERT INTO  management VALUES('Property Pete','Lincoln Park','34,000,000');
+INSERT INTO management VALUES('Hyde Park Prop','Downtown','3,000,000');
+INSERT INTO management VALUES('Fancy Rentals','Lake view','25,000,000');
+
+
+
+
